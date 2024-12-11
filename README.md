@@ -5,8 +5,7 @@ Este trabajo es realizado por los estudiantes:
 - Giovanni Mejía
 - Mark Hancco
 
-Este trabajo es del laboratorio 22 (Herencia, Polimorfismo e Interfaces), se asemeja en algo a los demás laboratorios en la implementación de
-reinos y tipo de territorio en el mapa, aplicación de bonus, etc. Pero también agrega nuevas cosas como nuevas derivaciones de tipos de soldados dependiendo del reino, además de implementar interfaces.
+Este trabajo es del laboratorio 23 (GUI), este laboratorio nos dió la libertad de implementar la lógica de los soldados a nuestro estilo, y en lo que respecta a este trabajo también se debía aplicar GUI, este programa completa el contexto que el juego quiere dar a los jugadores
 Este trabajo es de 2 jugadores por lo que se tiene que hacer interactivo.
 
 El avance en este trabajo se baso en estos 4 puntos.
