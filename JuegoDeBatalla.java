@@ -1,4 +1,7 @@
 import java.util.*;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 public class JuegoDeBatalla {
     private final Ejercito ejercito1;
     private final Ejercito ejercito2;
@@ -79,15 +82,95 @@ public class JuegoDeBatalla {
             }
     
             if (ejercito1.getSoldados().isEmpty()) {
-                System.out.println("\n¡El jugador 2 ha ganado la batalla!");
-                juegoActivo = false;
+                mostrarResultadoFinal("Jugador 2", ejercito1, ejercito2);
             } else if (ejercito2.getSoldados().isEmpty()) {
-                System.out.println("\n¡El jugador 1 ha ganado la batalla!");
-                juegoActivo = false;
-            } else {
-                turnoJugador1 = !turnoJugador1;
+                mostrarResultadoFinal("Jugador 1", ejercito1, ejercito2);
             }
         }
         System.out.println("Juego terminado.");
-    }  
+    } 
+
+    private void mostrarResultadoFinal(String ganador, Ejercito ejercito1, Ejercito ejercito2) {
+        JFrame frame = new JFrame("Resultado Final de la Batalla");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(800, 600);
+        frame.setLayout(new BorderLayout());
+
+        JLabel labelGanador = new JLabel("¡El ganador es: " + ganador + "!", SwingConstants.CENTER);
+        labelGanador.setFont(new Font("Arial", Font.BOLD, 20));
+        labelGanador.setForeground(Color.BLUE);
+        frame.add(labelGanador, BorderLayout.NORTH);
+
+        JPanel panelCentral = new JPanel(new BorderLayout());
+
+        JPanel panelDetalles = new JPanel();
+        panelDetalles.setLayout(new GridLayout(1, 2));
+
+        JTextArea detallesEjercito1 = new JTextArea();
+        detallesEjercito1.setText("Ejército de " + ejercito1.getNombreReino() + ":\n");
+        for (Soldado soldado : ejercito1.getSoldados()) {
+            detallesEjercito1.append(soldado.toString() + "\n");
+        }
+        detallesEjercito1.setEditable(false);
+        panelDetalles.add(new JScrollPane(detallesEjercito1));
+
+        JTextArea detallesEjercito2 = new JTextArea();
+        detallesEjercito2.setText("Ejército de " + ejercito2.getNombreReino() + ":\n");
+        for (Soldado soldado : ejercito2.getSoldados()) {
+            detallesEjercito2.append(soldado.toString() + "\n");
+        }
+        detallesEjercito2.setEditable(false);
+        panelDetalles.add(new JScrollPane(detallesEjercito2));
+
+        panelCentral.add(panelDetalles, BorderLayout.CENTER);
+
+        JPanel panelOpciones = new JPanel(new GridLayout(2, 1));
+
+        JCheckBox verDetalles = new JCheckBox("Mostrar Detalles Complejos");
+        verDetalles.addItemListener(e -> {
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+                detallesEjercito1.setBackground(Color.LIGHT_GRAY);
+                detallesEjercito2.setBackground(Color.LIGHT_GRAY);
+            } else {
+                detallesEjercito1.setBackground(Color.WHITE);
+                detallesEjercito2.setBackground(Color.WHITE);
+            }
+        });
+
+        ButtonGroup grupoOpciones = new ButtonGroup();
+        JRadioButton opcion1 = new JRadioButton("Opción 1");
+        JRadioButton opcion2 = new JRadioButton("Opción 2");
+        grupoOpciones.add(opcion1);
+        grupoOpciones.add(opcion2);
+
+        JPanel panelRadioButtons = new JPanel(new FlowLayout());
+        panelRadioButtons.add(opcion1);
+        panelRadioButtons.add(opcion2);
+
+        panelOpciones.add(verDetalles);
+        panelOpciones.add(panelRadioButtons);
+
+        panelCentral.add(panelOpciones, BorderLayout.SOUTH);
+
+        frame.add(panelCentral, BorderLayout.CENTER);
+
+        JComboBox<String> opcionesFinales = new JComboBox<>(new String[] { "Guardar Resultado", "Cerrar", "Reiniciar" });
+        JButton botonAccion = new JButton("Ejecutar");
+        botonAccion.addActionListener(e -> {
+            String seleccion = (String) opcionesFinales.getSelectedItem();
+            switch (seleccion) {
+                case "Guardar Resultado" -> JOptionPane.showMessageDialog(frame, "Resultados guardados.");
+                case "Cerrar" -> frame.dispose();
+                case "Reiniciar" -> JOptionPane.showMessageDialog(frame, "Reiniciando el juego...");
+            }
+        });
+
+        JPanel panelInferior = new JPanel(new FlowLayout());
+        panelInferior.add(opcionesFinales);
+        panelInferior.add(botonAccion);
+
+        frame.add(panelInferior, BorderLayout.SOUTH);
+
+        frame.setVisible(true);
+    }
 }

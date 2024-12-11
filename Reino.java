@@ -1,11 +1,12 @@
 import java.util.*;
 public class Reino {
-    public static final String[] REINOS_VALIDOS = {
-        "Inglaterra", 
-        "Francia", 
-        "Castilla-Aragón", 
-        "Moros", 
-        "Sacro Imperio Romano-Germánico"
+    private static final String[] REINOS_VALIDOS = {
+        "Reinos Escandinavos", 
+        "Reinos Anglo-Sajones", 
+        "Reino de Asturias", 
+        "Imperio Bizantino", 
+        "Imperio Carolingio", 
+        "Reino de los Búlgaros"
     };
 
     public static String[] escogerReinos() {

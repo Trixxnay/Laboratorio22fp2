@@ -1,15 +1,8 @@
 import java.util.*;
 public class Main {
     public static void main(String[] args) {
-        
-        ElegirReino nuevoReino1 =new ElegirReino();
-        String reino1,reino2;
-        reino1=nuevoReino1.getReinoElegido();
-        ElegirReino nuevoReino2 =new ElegirReino();
-        reino2=nuevoReino2.getReinoElegido();
-        
-        System.out.println(reino1 + reino2);
-        
+        Scanner scanner = new Scanner(System.in);
+
         Mapa mapa = new Mapa(10, 10);
 
         String[] reinosSeleccionados = Reino.escogerReinos();
@@ -51,5 +44,6 @@ public class Main {
         JuegoDeBatalla juego = new JuegoDeBatalla(mapa, ejercito1, ejercito2);
         juego.iniciar();
 
+        scanner.close();
     }
 }
