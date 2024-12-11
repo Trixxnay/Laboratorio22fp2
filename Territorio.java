@@ -1,7 +1,7 @@
 import java.util.*;
 public class Territorio {
     private static final String[] TERRITORIOS = {
-        "Bosque", "Campo Abierto", "Montaña", "Desierto", "Playa"
+        "Bosque", "Campo Abierto", "Montania", "Desierto", "Playa"
     };
 
     public static String generarTerritorio() {

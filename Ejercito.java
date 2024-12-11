@@ -77,10 +77,10 @@ public class Ejercito {
         boolean tieneBeneficio = switch (this.nombreReino) {
             case "Reinos Escandinavos" -> territorio.equals("Bosque");
             case "Reinos Anglo-Sajones" -> territorio.equals("Campo Abierto");
-            case "Reino de Asturias" -> territorio.equals("Montaña");
+            case "Reino de Asturias" -> territorio.equals("Montania");
             case "Imperio Bizantino" -> territorio.equals("Playa");
             case "Imperio Carolingio" -> territorio.equals("Bosque") || territorio.equals("Campo Abierto");
-            case "Reino de los Búlgaros" -> territorio.equals("Montaña") || territorio.equals("Desierto");
+            case "Reino de los Búlgaros" -> territorio.equals("Montania") || territorio.equals("Desierto");
             default -> false;
         };
 
@@ -88,12 +88,12 @@ public class Ejercito {
             for (Soldado soldado : soldados) {
                 soldado.aumentarVida(1);
             }
-            System.out.println("El ejército de " + nombreReino + " recibe beneficios por el territorio: " + territorio);
+            System.out.println("El ejercito de " + nombreReino + " recibe beneficios por el territorio: " + territorio);
         }
     }
     
     public void mostrarSoldados() {
-        System.out.println("Soldados del Ejército de " + nombreReino + ":");
+        System.out.println("Soldados del Ejercito de " + nombreReino + ":");
         for (Soldado soldado : soldados) {
             System.out.println(soldado.getClass().getSimpleName() + ": " + soldado);
         }
@@ -120,7 +120,7 @@ public class Ejercito {
         Soldado unidadEspecial;
         switch (nombreReino) {
             case "Reinos Escandinavos" -> unidadEspecial = new EspadachinTeutonico(
-                "Espadachin Teutónico (" + nombreReino + ")", 
+                "Espadachin Teutonico (" + nombreReino + ")", 
                 12, 10, 10, fila, columna
             );
             case "Reinos Anglo-Sajones" -> unidadEspecial = new Arquero(
@@ -139,7 +139,7 @@ public class Ejercito {
                 "Caballero Franco (" + nombreReino + ")", 
                 12, 13, 7, fila, columna
             );
-            case "Reino de los Búlgaros" -> unidadEspecial = new CaballeroMoro(
+            case "Reino de los Bulgaros" -> unidadEspecial = new CaballeroMoro(
                 "Caballero Moro (" + nombreReino + ")", 
                 13, 14, 6, fila, columna
             );
@@ -160,7 +160,7 @@ public class Ejercito {
     public void intentarEvolucionar() {
         int contEjercitos = 2;
         if (evolucionRealizada) {
-            System.out.println("El ejército de " + nombreReino + " ya realizó su evolución.");
+            System.out.println("El ejercito de " + nombreReino + " ya realizo su evolución.");
             return;
         }
 
@@ -174,7 +174,7 @@ public class Ejercito {
                 case "Reinos Escandinavos" -> {
                     if (soldado instanceof Espadachin) {
                         soldados.set(i, new EspadachinTeutonico(
-                            "Espadachin Teutónico (" + nombreReino + ")", 
+                            "Espadachin Teutonico (" + nombreReino + ")", 
                             soldado.getNivelVida(), 
                             soldado.getAtaque(), 
                             soldado.getDefensa(), 
@@ -183,14 +183,14 @@ public class Ejercito {
                         ));
                         soldados.get(i).setNumEjercito(contEjercitos);
                         evolucionRealizada = true;
-                        System.out.println("El ejército de Reinos Escandinavos ha evolucionado un Espadachin a Espadachin Teutónico.");
+                        System.out.println("El ejercito de Reinos Escandinavos ha evolucionado un Espadachin a Espadachin Teutonico.");
                         return;
                     }
                 }
                 case "Reinos Anglo-Sajones" -> {
                     if (soldado instanceof Arquero) {
                         soldados.set(i, new Arquero(
-                            "Arquero Élite (" + nombreReino + ")", 
+                            "Arquero Elite (" + nombreReino + ")", 
                             soldado.getNivelVida(), 
                             soldado.getAtaque() + 2, 
                             soldado.getDefensa(), 
@@ -200,7 +200,7 @@ public class Ejercito {
                         ));
                         soldados.get(i).setNumEjercito(contEjercitos);
                         evolucionRealizada = true;
-                        System.out.println("El ejército de Reinos Anglo-Sajones ha evolucionado un Arquero a Arquero Élite.");
+                        System.out.println("El ejercito de Reinos Anglo-Sajones ha evolucionado un Arquero a Arquero Elite.");
                         return;
                     }
                 }
@@ -216,14 +216,14 @@ public class Ejercito {
                         ));
                         soldados.get(i).setNumEjercito(contEjercitos);
                         evolucionRealizada = true;
-                        System.out.println("El ejército del Reino de Asturias ha evolucionado un Espadachin a Espadachin Conquistador.");
+                        System.out.println("El ejercito del Reino de Asturias ha evolucionado un Espadachin a Espadachin Conquistador.");
                         return;
                     }
                 }
                 case "Imperio Bizantino" -> {
                     if (soldado instanceof Caballero) {
                         soldados.set(i, new Caballero(
-                            "Caballero Élite (" + nombreReino + ")", 
+                            "Caballero Elite (" + nombreReino + ")", 
                             soldado.getNivelVida(), 
                             soldado.getAtaque() + 3, 
                             soldado.getDefensa() + 1, 
@@ -233,7 +233,7 @@ public class Ejercito {
                         ));
                         soldados.get(i).setNumEjercito(contEjercitos);
                         evolucionRealizada = true;
-                        System.out.println("El ejército del Imperio Bizantino ha evolucionado un Caballero a Caballero Élite.");
+                        System.out.println("El ejercito del Imperio Bizantino ha evolucionado un Caballero a Caballero Elite.");
                         return;
                     }
                 }
@@ -249,11 +249,11 @@ public class Ejercito {
                         ));
                         soldados.get(i).setNumEjercito(contEjercitos);
                         evolucionRealizada = true;
-                        System.out.println("El ejército del Imperio Carolingio ha evolucionado un Caballero a Caballero Franco.");
+                        System.out.println("El ejercito del Imperio Carolingio ha evolucionado un Caballero a Caballero Franco.");
                         return;
                     }
                 }
-                case "Reino de los Búlgaros" -> {
+                case "Reino de los Bulgaros" -> {
                     if (soldado instanceof Caballero) {
                         soldados.set(i, new CaballeroMoro(
                             "Caballero Moro (" + nombreReino + ")", 
@@ -265,7 +265,7 @@ public class Ejercito {
                         ));
                         soldados.get(i).setNumEjercito(contEjercitos);
                         evolucionRealizada = true;
-                        System.out.println("El ejército del Reino de los Búlgaros ha evolucionado un Caballero a Caballero Moro.");
+                        System.out.println("El ejercito del Reino de los Bulgaros ha evolucionado un Caballero a Caballero Moro.");
                         return;
                     }
                 }
@@ -273,6 +273,6 @@ public class Ejercito {
             }
         }
 
-        System.out.println("No hay soldados elegibles para evolucionar en el ejército de " + nombreReino + ".");
+        System.out.println("No hay soldados elegibles para evolucionar en el ejercito de " + nombreReino + ".");
     }
 }

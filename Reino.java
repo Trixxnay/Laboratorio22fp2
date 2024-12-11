@@ -6,7 +6,7 @@ public class Reino {
         "Reino de Asturias", 
         "Imperio Bizantino", 
         "Imperio Carolingio", 
-        "Reino de los Búlgaros"
+        "Reino de los Bulgaros"
     };
 
     public static String[] escogerReinos() {
@@ -21,7 +21,7 @@ public class Reino {
                     System.out.println((j + 1) + ". " + REINOS_VALIDOS[j]);
                 }
 
-                System.out.print("Ingresa el número de tu reino: ");
+                System.out.print("Ingresa el numero de tu reino: ");
                 int seleccion = scanner.nextInt() - 1;
 
                 if (seleccion >= 0 && seleccion < REINOS_VALIDOS.length) {
@@ -35,7 +35,7 @@ public class Reino {
                         System.out.println("Ese reino ya ha sido elegido. Elige otro.");
                     }
                 } else {
-                    System.out.println("Selección inválida. Intenta nuevamente.");
+                    System.out.println("Seleccion invalida. Intenta nuevamente.");
                 }
             }
         }

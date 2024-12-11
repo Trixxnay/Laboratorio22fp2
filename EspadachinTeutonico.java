@@ -14,10 +14,10 @@ public class EspadachinTeutonico extends Espadachin {
 
     public void lanzarJabalina() {
         if (numeroJabalinas > 0) {
-            System.out.println(nombre + " lanza una jabalina de tamaño " + tamanoJabalina + "!");
+            System.out.println(nombre + " lanza una jabalina de tamanio " + tamanoJabalina + "!");
             numeroJabalinas--;
         } else {
-            System.out.println(nombre + " no tiene más jabalinas.");
+            System.out.println(nombre + " no tiene mas jabalinas.");
         }
     }
 
