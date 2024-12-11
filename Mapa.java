@@ -68,4 +68,3 @@ public class Mapa {
         return tipoSoldado + inicialEjercito; 
     }
 }
-
