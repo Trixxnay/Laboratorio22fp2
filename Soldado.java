@@ -8,6 +8,7 @@ public abstract class Soldado {
     protected int numEjercito;
 
     public Soldado(String nombre, int nivelVida, int ataque, int defensa, int fila, int columna) {
+        this.numEjercito=Ejercito.getContEjercitos();
         this.nombre = nombre;
         this.nivelVida = nivelVida;
         this.ataque = ataque;
@@ -19,12 +20,12 @@ public abstract class Soldado {
     public void setNumEjercito(int numEjercito) {
         this.numEjercito = numEjercito;
     }
-
+    
     public int getNumEjercito() {
         return numEjercito;
     }
-
-    public abstract void accionEspecial();
+    
+    public abstract void accionEspecial(); 
 
     public void mover(int nuevaFila, int nuevaColumna) {
         this.fila = nuevaFila;
@@ -38,7 +39,7 @@ public abstract class Soldado {
     @Override
     public String toString() {
         return String.format("%s [Vida: %d, Ataque: %d, Defensa: %d, Pos: (%d,%d), NumEjercito: %d]", 
-                              nombre, nivelVida, ataque, defensa, fila, columna, numEjercito);
+                              nombre, nivelVida, ataque, defensa, fila, columna,numEjercito);
     }
 
     public String getNombre() {
@@ -67,5 +68,5 @@ public abstract class Soldado {
 
     public int getDefensa() {
         return defensa;
-    }
+    }   
 }

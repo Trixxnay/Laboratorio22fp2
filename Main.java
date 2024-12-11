@@ -1,16 +1,18 @@
 import java.util.*;
-
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
+        
+        ElegirReino nuevoReino1 =new ElegirReino();
+        String reino1,reino2;
+        reino1=nuevoReino1.getReinoElegido();
+        ElegirReino nuevoReino2 =new ElegirReino();
+        reino2=nuevoReino2.getReinoElegido();
+        
+        System.out.println(reino1 + reino2);
+        
         Mapa mapa = new Mapa(10, 10);
 
-        Menu menu = new Menu();
-        menu.iniciarSimulacion();
-        
-        String conflicto = "Batalla de Valorthia"; // Esto debería provenir del menú, por ahora lo dejamos fijo.
-        String[] reinosSeleccionados = new String[2];
+        String[] reinosSeleccionados = Reino.escogerReinos();
 
         System.out.println("Jugador 1 ha elegido: " + reinosSeleccionados[0]);
 
@@ -32,6 +34,12 @@ public class Main {
         ejercito2.mostrarSoldados();
         System.out.println("------------------------------------------");
 
+        String territorio = Territorio.generarTerritorio();
+        System.out.println("El territorio actual es: " + territorio);
+
+        ejercito1.aplicarBeneficios(territorio);
+        ejercito2.aplicarBeneficios(territorio);
+
         for (Soldado soldado : ejercito1.getSoldados()) {
             mapa.colocarSoldado(soldado);
         }
@@ -43,6 +51,5 @@ public class Main {
         JuegoDeBatalla juego = new JuegoDeBatalla(mapa, ejercito1, ejercito2);
         juego.iniciar();
 
-        scanner.close();
     }
 }

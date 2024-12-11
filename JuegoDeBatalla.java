@@ -32,6 +32,10 @@ public class JuegoDeBatalla {
             Ejercito ejercitoActual = turnoJugador1 ? ejercito1 : ejercito2;
             Ejercito ejercitoOponente = turnoJugador1 ? ejercito2 : ejercito1;
     
+            if (!ejercitoActual.isEvolucionRealizada()) {
+                ejercitoActual.intentarEvolucionar();
+            }
+    
             System.out.println("\nSoldados disponibles:");
             for (int i = 0; i < ejercitoActual.getSoldados().size(); i++) {
                 System.out.println((i + 1) + ". " + ejercitoActual.getSoldados().get(i));
